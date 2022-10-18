@@ -1,0 +1,15 @@
+F:\CS30\Data-Management1\bin\Debug\net6.0\Data-Management1.exe
+F:\CS30\Data-Management1\bin\Debug\net6.0\Data-Management1.deps.json
+F:\CS30\Data-Management1\bin\Debug\net6.0\Data-Management1.runtimeconfig.json
+F:\CS30\Data-Management1\bin\Debug\net6.0\Data-Management1.dll
+F:\CS30\Data-Management1\bin\Debug\net6.0\Data-Management1.pdb
+F:\CS30\Data-Management1\obj\Debug\net6.0\Data-Management1.csproj.AssemblyReference.cache
+F:\CS30\Data-Management1\obj\Debug\net6.0\Data-Management1.GeneratedMSBuildEditorConfig.editorconfig
+F:\CS30\Data-Management1\obj\Debug\net6.0\Data-Management1.AssemblyInfoInputs.cache
+F:\CS30\Data-Management1\obj\Debug\net6.0\Data-Management1.AssemblyInfo.cs
+F:\CS30\Data-Management1\obj\Debug\net6.0\Data-Management1.csproj.CoreCompileInputs.cache
+F:\CS30\Data-Management1\obj\Debug\net6.0\Data-Management1.dll
+F:\CS30\Data-Management1\obj\Debug\net6.0\refint\Data-Management1.dll
+F:\CS30\Data-Management1\obj\Debug\net6.0\Data-Management1.pdb
+F:\CS30\Data-Management1\obj\Debug\net6.0\Data-Management1.genruntimeconfig.cache
+F:\CS30\Data-Management1\obj\Debug\net6.0\ref\Data-Management1.dll
