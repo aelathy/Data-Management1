@@ -41,24 +41,6 @@ while (loop)
     string menuOption = Console.ReadLine().ToLower();
     Console.WriteLine();
 
-    int selectionSort(List<int> aList)
-    {
-        for (int i = 0; i < aList.Count - 1; i++)
-        {
-            int min_pos = i;
-            for (int j = i + 1; j < aList.Count; j++)
-            {
-                if (aList[min_pos] > aList[j])
-                {
-                    min_pos = j;
-                }
-            }
-            int el = aList[min_pos];
-            aList[min_pos] = aList[i];
-            aList[i] = el;
-        }
-        return -1;
-    }
 
     if (menuOption == "1")
     {
@@ -90,6 +72,20 @@ while (loop)
     else if (menuOption == "3")
     {
         // Do Some Type of Sort to Organize Products by Lowest to Highest Price
+        for (int i = 0; i < products.Count; i++)
+        {
+            for (int j = 0; j < products.Count - (i + 1); j++)
+            {
+                int compare = products[j].Price.CompareTo(products[j + 1].Price);
+                if (compare == 1)
+                {
+                    int chng = products[j + 1].Price;
+                    products[j + 1].Price = products[j].Price;
+                    products[j].Price = chng;
+                }
+            }
+        }
+
     }
     else if (menuOption == "4")
     {
@@ -99,53 +95,33 @@ while (loop)
         string addType = Console.ReadLine().ToLower();
         Console.Write("Brand: ");
         string addBrand = Console.ReadLine().ToLower();
-        // for (int i = 0; i <= ShoppingList.Count; i++)
-        // {
-        //     if (addType != ShoppingList[i].Type.ToLower() && addBrand != ShoppingList[i].Brand.ToLower())
-        //     {
-        //         for (int j = 0; j < products.Count; j++)
-        //         {
-        //             if (addType == products[j].Type.ToLower() && addBrand == products[j].Brand.ToLower())
-        //             {
-        //                 ShoppingList.Add(products[j]);
-        //                 Console.WriteLine("Added to shopping list.");
-        //             }
-        //             else
-        //             {
-        //                 Console.WriteLine("broek");
-        //             }
-        //         }
-        //     }
-        //     else
-        //     {
-        //         Console.WriteLine("Already in Shopping List.");
-        //     }
-        // }
-
         for (int i = 0; i < products.Count; i++)
         {
             if (addType == products[i].Type.ToLower() && addBrand == products[i].Brand.ToLower())
             {
-                foreach (Product item in ShoppingList)
+                if (ShoppingList.Count > 0)
                 {
-                    if (addType != item.Type.ToLower() && addBrand != item.Brand.ToLower())
+                    foreach (Product item in ShoppingList)
                     {
-                        ShoppingList.Add(products[i]);
-                        Console.WriteLine("Product added to shopping list.");
+                        if (addType == item.Type.ToLower() && addBrand == item.Brand.ToLower())
+                        {
+                            Console.WriteLine("Item already in shopping list.");
+                        }
+                        else
+                        {
+                            ShoppingList.Add(products[i]);
+                            Console.WriteLine("Item added to shopping list.");
+                            break;
+                        }
                     }
+                }
+                else
+                {
+                    ShoppingList.Add(products[i]);
+                    Console.WriteLine("item addded to shopping list.");
                 }
             }
         }
-
-
-        // PLO
-        // for (int i = 0; i < products.Count; i++)
-        // {
-        //     if (addType == products[i].Type.ToLower() && addBrand == products[i].Brand.ToLower())
-        //     {
-        //         ShoppingList.Add(products[i]);
-        //     }
-        // }
     }
     else if (menuOption == "5")
     {
