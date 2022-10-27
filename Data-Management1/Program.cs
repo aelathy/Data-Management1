@@ -118,7 +118,7 @@ while (loop)
                 else
                 {
                     ShoppingList.Add(products[i]);
-                    Console.WriteLine("item addded to shopping list.");
+                    Console.WriteLine("Item addded to shopping list.");
                 }
             }
         }
@@ -126,24 +126,52 @@ while (loop)
     else if (menuOption == "5")
     {
         // Remove Product from Shopping List
-        Console.WriteLine("Enter the type & brand of the product you want to REMOVE:");
-        Console.Write("Type: ");
-        string addType = Console.ReadLine();
-        Console.Write("Brand: ");
-        string addBrand = Console.ReadLine();
-        for (int i = 0; i < products.Count; i++)
+        if (ShoppingList.Count > 0)
         {
-            if (addType == products[i].Type && addBrand == products[i].Brand)
+            bool result = false;
+            Console.WriteLine("Enter the type & brand of the product you want to REMOVE:");
+            Console.Write("Type: ");
+            string addType = Console.ReadLine().ToLower();
+            Console.Write("Brand: ");
+            string addBrand = Console.ReadLine().ToLower();
+            for (int i = 0; i < products.Count; i++)
             {
+                if (addType == products[i].Type.ToLower() && addBrand == products[i].Brand.ToLower())
+                {
+                    for (int j = 0; j < ShoppingList.Count; j++)
+                    {
+                        if (addType == ShoppingList[j].Type.ToLower() && addBrand == ShoppingList[j].Brand.ToLower())
+                        {
+                            result = true;
+                            ShoppingList.Remove(ShoppingList[j]);
+                            Console.WriteLine("Item removed from shopping list.");
+                        }
+                    }
+                }
             }
+            if (!result)
+            {
+                Console.WriteLine("Item not found in shopping list.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Shopping list is already empty.");
         }
     }
     else if (menuOption == "6")
     {
         // Display Shopping Cart
-        for (int i = 0; i < ShoppingList.Count; i++)
+        if (ShoppingList.Count > 0)
         {
-            Console.WriteLine($"{ShoppingList[i].Type} {ShoppingList[i].Brand} ${ShoppingList[i].Price}");
+            for (int i = 0; i < ShoppingList.Count; i++)
+            {
+                Console.WriteLine($"{ShoppingList[i].Type} {ShoppingList[i].Brand} ${ShoppingList[i].Price}");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Shopping list empty.");
         }
     }
     else if (menuOption == "7")
