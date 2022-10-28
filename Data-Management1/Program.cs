@@ -13,6 +13,9 @@ products.Add(new Product("Laptop", "Acer", 800));
 products.Add(new Product("Phone", "Samsung", 1000));
 products.Add(new Product("Phone", "Apple", 1000));
 products.Add(new Product("Monitor", "Asus", 300));
+products.Add(new Product("Telivision", "Samsung", 700));
+products.Add(new Product("Tablet", "Samsung", 100));
+products.Add(new Product("Laptop", "Apple", 2000));
 // Temp Shopping List
 List<Product> ShoppingList = new List<Product>();
 
@@ -89,6 +92,7 @@ while (loop)
     }
     else if (menuOption == "4")
     {
+        bool result = false;
         // Add Product to Shopping List
         Console.WriteLine("Enter the type & brand of the product you want to ADD:");
         Console.Write("Type: ");
@@ -99,18 +103,20 @@ while (loop)
         {
             if (addType == products[i].Type.ToLower() && addBrand == products[i].Brand.ToLower())
             {
+                // Product Found
+                result = true;
                 if (ShoppingList.Count > 0)
                 {
                     foreach (Product item in ShoppingList)
                     {
                         if (addType == item.Type.ToLower() && addBrand == item.Brand.ToLower())
                         {
-                            Console.WriteLine("Item already in shopping list.");
+                            Console.WriteLine("Item already in shopping cart.");
                         }
                         else
                         {
                             ShoppingList.Add(products[i]);
-                            Console.WriteLine("Item added to shopping list.");
+                            Console.WriteLine("Item added to shopping cart.");
                             break;
                         }
                     }
@@ -118,9 +124,13 @@ while (loop)
                 else
                 {
                     ShoppingList.Add(products[i]);
-                    Console.WriteLine("Item addded to shopping list.");
+                    Console.WriteLine("Item addded to shopping cart.");
                 }
             }
+        }
+        if (!result)
+        {
+            Console.WriteLine("Product not found.");
         }
     }
     else if (menuOption == "5")
@@ -134,29 +144,23 @@ while (loop)
             string addType = Console.ReadLine().ToLower();
             Console.Write("Brand: ");
             string addBrand = Console.ReadLine().ToLower();
-            for (int i = 0; i < products.Count; i++)
+            for (int j = 0; j < ShoppingList.Count; j++)
             {
-                if (addType == products[i].Type.ToLower() && addBrand == products[i].Brand.ToLower())
+                if (addType == ShoppingList[j].Type.ToLower() && addBrand == ShoppingList[j].Brand.ToLower())
                 {
-                    for (int j = 0; j < ShoppingList.Count; j++)
-                    {
-                        if (addType == ShoppingList[j].Type.ToLower() && addBrand == ShoppingList[j].Brand.ToLower())
-                        {
-                            result = true;
-                            ShoppingList.Remove(ShoppingList[j]);
-                            Console.WriteLine("Item removed from shopping list.");
-                        }
-                    }
+                    result = true;
+                    ShoppingList.Remove(ShoppingList[j]);
+                    Console.WriteLine("Item removed from shopping cart.");
                 }
             }
             if (!result)
             {
-                Console.WriteLine("Item not found in shopping list.");
+                Console.WriteLine("Item not found in shopping cart.");
             }
         }
         else
         {
-            Console.WriteLine("Shopping list is already empty.");
+            Console.WriteLine("Shopping cart is already empty.");
         }
     }
     else if (menuOption == "6")
@@ -171,7 +175,7 @@ while (loop)
         }
         else
         {
-            Console.WriteLine("Shopping list empty.");
+            Console.WriteLine("Shopping cart empty.");
         }
     }
     else if (menuOption == "7")
